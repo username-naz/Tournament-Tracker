@@ -148,12 +148,13 @@ namespace TrackerUI
             this.btnCreatePrize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(157)))), ((int)(((byte)(237)))));
             this.btnCreatePrize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePrize.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCreatePrize.Location = new System.Drawing.Point(315, 381);
+            this.btnCreatePrize.Location = new System.Drawing.Point(315, 376);
             this.btnCreatePrize.Name = "btnCreatePrize";
             this.btnCreatePrize.Size = new System.Drawing.Size(105, 57);
             this.btnCreatePrize.TabIndex = 16;
             this.btnCreatePrize.Text = "Create Prize";
             this.btnCreatePrize.UseVisualStyleBackColor = false;
+            this.btnCreatePrize.Click += new System.EventHandler(this.btnCreatePrize_Click);
             // 
             // CreatePrizeForm
             // 

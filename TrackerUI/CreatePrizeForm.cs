@@ -24,5 +24,24 @@ namespace TrackerUI
         {
 
         }
+
+        private void btnCreatePrize_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool IsValid()
+        {
+            bool valid = true;
+            int placeNumber;
+            bool validPlaceNumber = int.TryParse(txtBoxPlaceNumber.Text, out placeNumber) || placeNumber < 1;
+            if (!validPlaceNumber)
+            {
+                valid = false;
+            }
+
+
+            return valid;
+        }
     }
 }
