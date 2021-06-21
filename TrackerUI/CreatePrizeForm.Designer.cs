@@ -119,6 +119,7 @@ namespace TrackerUI
             this.txtBoxPrizeAmount.Name = "txtBoxPrizeAmount";
             this.txtBoxPrizeAmount.Size = new System.Drawing.Size(156, 27);
             this.txtBoxPrizeAmount.TabIndex = 13;
+            this.txtBoxPrizeAmount.Text = "0";
             // 
             // txtBoxPrizePercentage
             // 
@@ -126,6 +127,7 @@ namespace TrackerUI
             this.txtBoxPrizePercentage.Name = "txtBoxPrizePercentage";
             this.txtBoxPrizePercentage.Size = new System.Drawing.Size(156, 27);
             this.txtBoxPrizePercentage.TabIndex = 14;
+            this.txtBoxPrizePercentage.Text = "0";
             this.txtBoxPrizePercentage.TextChanged += new System.EventHandler(this.txtBoxPrizePercentage_TextChanged);
             // 
             // txtVs

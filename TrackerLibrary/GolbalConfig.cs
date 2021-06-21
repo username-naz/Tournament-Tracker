@@ -14,8 +14,6 @@ namespace TrackerLibrary
 
                 var sqlConnection = new SqlConnection();
                 Connections.Add(sqlConnection);
-
-                Connections.ForEach((connection) => { });
             }
 
             if (useTextFiles)
