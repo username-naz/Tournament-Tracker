@@ -8,21 +8,18 @@ namespace TrackerLibrary
 {
     public static class GolbalConfig
     {
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-        public static void InitialiseConnections(bool useDatabase, bool useTextFiles) {
-            if (useDatabase)    
+        public static IDataConnection Connection { get; private set; }
+        public static void InitialiseConnections(DataBaseType type) {
+            switch (type)
             {
-                //TODO -  Create SQL Connection
-
-                var sqlConnection = new SqlConnection();
-                Connections.Add(sqlConnection);
-            }
-
-            if (useTextFiles)
-            {
-                //TODO - Create Text File Connection
-                var textFileConnection = new TextFileConnection();
-                Connections.Add(textFileConnection);
+                case DataBaseType.SQL:
+                    Connection = new SqlConnection();
+                    break;
+                case DataBaseType.TEXT_FILE:
+                    Connection = new TextFileConnection();
+                    break;
+                default:
+                    break;
             }
         }
 

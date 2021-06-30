@@ -5,13 +5,6 @@ using System.Data;
 using System.Text;
 using TrackerLibrary;
 using TrackerLibrary.Models;
-/*
-@PlaceNumber int,
-@PlaceName nvarchar(50),
-@PrizeAmount money,
-@PrizePercentage float,
-@id int = 0 output
-*/
 
 namespace TrackerLibrary.DataAccess
 {
@@ -21,6 +14,14 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GolbalConfig.CnnString("Tournaments")))
             {
+                /*
+                @PlaceNumber int,
+                @PlaceName nvarchar(50),
+                @PrizeAmount money,
+                @PrizePercentage float,
+                @id int = 0 output
+                */
+                
                 var p = new DynamicParameters();
                 p.Add("@PlaceNumber", model.PlaceNumber);
                 p.Add("@PlaceName", model.PlaceName);
