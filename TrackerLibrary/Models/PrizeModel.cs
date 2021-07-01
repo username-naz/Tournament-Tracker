@@ -7,8 +7,8 @@ namespace TrackerLibrary.Models
     public class PrizeModel
     {   
         public int Id { get; set; }
-        public string PlaceName { get; set; }
         public int PlaceNumber { get; set; }
+        public string PlaceName { get; set; }
         public decimal PrizeAmount { get; set; }
         public double PrizePercentage { get; set; }
 
@@ -16,7 +16,7 @@ namespace TrackerLibrary.Models
         {
 
         }
-        public PrizeModel (string PlaceName, string PlaceNumber, string PrizeAmount, string PrizePercentage)
+        public PrizeModel (string PlaceNumber, string PlaceName, string PrizeAmount, string PrizePercentage)
         {
             this.PlaceName = PlaceName;
 

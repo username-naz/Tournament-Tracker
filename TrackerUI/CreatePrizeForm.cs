@@ -32,16 +32,16 @@ namespace TrackerUI
             if (IsValidData())
             {
                 var model = new PrizeModel(
-                    txtboxPlaceName.Text,
                     txtBoxPlaceNumber.Text,
+                    txtboxPlaceName.Text,
                     txtBoxPrizeAmount.Text,
                     txtBoxPrizePercentage.Text
                     );
 
                 GolbalConfig.Connection.CreatePrize(model);
 
-                txtboxPlaceName.Text = "";
                 txtBoxPlaceNumber.Text = "";
+                txtboxPlaceName.Text = "";
                 txtBoxPrizeAmount.Text = "0";
                 txtBoxPrizePercentage.Text = "0";
             }
