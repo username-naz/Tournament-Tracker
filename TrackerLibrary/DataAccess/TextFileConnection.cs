@@ -10,6 +10,8 @@ namespace TrackerLibrary.DataAccess
     public class TextFileConnection : IDataConnection
     {
         private const string PrizesFile = "PrizeModels.csv";
+
+
         public PrizeModel CreatePrize(PrizeModel model)
         {
             int currentId;
@@ -31,6 +33,10 @@ namespace TrackerLibrary.DataAccess
             prizes.SavetoPrizesFile(PrizesFile);
 
             return model;
+        }
+        public void CreatePerson(PersonModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }

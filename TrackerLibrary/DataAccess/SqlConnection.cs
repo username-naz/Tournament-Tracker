@@ -40,11 +40,18 @@ namespace TrackerLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
             {
+                /*
+                @FirstName nvarchar(150),
+	            @LastName nvarchar(150),
+	            @EmailAddress nvarchar(400),
+	            @PhoneNumber varchar(15),
+	            @id int = 0 output
+                */
                 var p = new DynamicParameters();
-                p.Add("@PlaceNumber", model.FirstName);
-                p.Add("@PlaceName", model.LastName);
-                p.Add("@PrizeAmount", model.Email);
-                p.Add("@PrizePercentage", model.PhoneNumber);
+                p.Add("@FirstName", model.FirstName);
+                p.Add("@LastName", model.LastName);
+                p.Add("@EmailAddress", model.Email);
+                p.Add("@PhoneNumber", model.PhoneNumber);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
