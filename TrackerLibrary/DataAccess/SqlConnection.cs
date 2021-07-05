@@ -36,7 +36,7 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
-        public void CreatePerson(PersonModel model)
+        public PersonModel CreatePerson(PersonModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
             {
@@ -56,7 +56,9 @@ namespace TrackerLibrary.DataAccess
 
                 connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
                 model.Id = p.Get<int>("@id");
+
             }
+            return model;
          }
     }
 }
