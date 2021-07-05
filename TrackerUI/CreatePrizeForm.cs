@@ -38,7 +38,7 @@ namespace TrackerUI
                     txtBoxPrizePercentage.Text
                     );
 
-                GolbalConfig.Connection.CreatePrize(model);
+                GlobalConfig.Connection.CreatePrize(model);
 
                 txtBoxPlaceNumber.Text = "";
                 txtboxPlaceName.Text = "";

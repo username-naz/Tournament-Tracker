@@ -10,9 +10,10 @@ namespace TrackerLibrary.DataAccess
 {
     public class SqlConnection : IDataConnection
     {
+
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GolbalConfig.CnnString("Tournaments")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
             {
                 /*
                 @PlaceNumber int,
@@ -35,5 +36,20 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+        public void CreatePerson(PersonModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                var p = new DynamicParameters();
+                p.Add("@PlaceNumber", model.FirstName);
+                p.Add("@PlaceName", model.LastName);
+                p.Add("@PrizeAmount", model.Email);
+                p.Add("@PrizePercentage", model.PhoneNumber);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
+                model.Id = p.Get<int>("@id");
+            }
+         }
     }
 }
