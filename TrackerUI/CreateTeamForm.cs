@@ -12,9 +12,31 @@ namespace TrackerUI
 {
     public partial class CreateTeamForm : Form
     {
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetListOfAllPeople();
+        private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
         public CreateTeamForm()
         {
             InitializeComponent();
+            //CreateSampleData();
+            WireUpLists();
+        }
+
+        private void CreateSampleData()
+        {
+            availableTeamMembers.Add(new PersonModel { FirstName = "Timmy", LastName = "Jim" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Joshua", LastName = "Chaplin" });
+
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Jane", LastName = "Bostin" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Marry", LastName = "Lee" });
+
+        }
+        private void WireUpLists()
+        {
+            comboSelectTeamMember.DataSource = availableTeamMembers;
+            comboSelectTeamMember.DisplayMember = "FullName";
+
+            listBoxTeamMembers.DataSource = selectedTeamMembers;
+            listBoxTeamMembers.DisplayMember = "FullName";
         }
 
         private void btnScore_Click(object sender, EventArgs e)
@@ -53,11 +75,12 @@ namespace TrackerUI
                 MessageBox.Show("Please enter all the fields");
         }
 
-        private bool isValidForm() {
+        private bool isValidForm()
+        {
             if (txtBoxFirstName.Text.Length * txtBoxLastName.Text.Length * txtBoxEmail.Text.Length * txtPhoneNumber.Text.Length == 0)
                 return false;
 
-           return true;
+            return true;
         }
     }
 }

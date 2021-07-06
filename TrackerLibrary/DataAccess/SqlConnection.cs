@@ -10,10 +10,10 @@ namespace TrackerLibrary.DataAccess
 {
     public class SqlConnection : IDataConnection
     {
-
+        private string db = "Tournaments";
         public PrizeModel CreatePrize(PrizeModel model)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 /*
                 @PlaceNumber int,
@@ -38,7 +38,7 @@ namespace TrackerLibrary.DataAccess
         }
         public PersonModel CreatePerson(PersonModel model)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 /*
                 @FirstName nvarchar(150),
@@ -60,5 +60,15 @@ namespace TrackerLibrary.DataAccess
             }
             return model;
          }
+
+        public List<PersonModel> GetListOfAllPeople()
+        {
+            List<PersonModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                    output = connection.Query<PersonModel>("dbo.spPeople_GetAll").AsList<PersonModel>();
+            }
+            return output;
+        }
     }
 }

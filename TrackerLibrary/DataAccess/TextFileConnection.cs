@@ -57,5 +57,10 @@ namespace TrackerLibrary.DataAccess
 
             return model;
         }
+
+        public List<PersonModel> GetListOfAllPeople()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
