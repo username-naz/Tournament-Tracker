@@ -32,17 +32,16 @@ namespace TrackerUI
         }
         private void WireUpLists()
         {
+            comboSelectTeamMember.DataSource = null;
             comboSelectTeamMember.DataSource = availableTeamMembers;
             comboSelectTeamMember.DisplayMember = "FullName";
 
+            listBoxTeamMembers.DataSource = null;
             listBoxTeamMembers.DataSource = selectedTeamMembers;
             listBoxTeamMembers.DisplayMember = "FullName";
         }
 
-        private void btnScore_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void txtEntryFee_Click(object sender, EventArgs e)
         {
@@ -66,6 +65,9 @@ namespace TrackerUI
 
                 GlobalConfig.Connection.CreatePerson(model);
 
+                selectedTeamMembers.Add(model);
+                WireUpLists();
+
                 txtBoxFirstName.Text = "";
                 txtBoxLastName.Text = "";
                 txtBoxEmail.Text = "";
@@ -81,6 +83,28 @@ namespace TrackerUI
                 return false;
 
             return true;
+        }
+
+        private void btnAddMember_Click(object sender, EventArgs e)
+        {
+            if (comboSelectTeamMember.SelectedItem == null)
+                return;
+
+            PersonModel p = (PersonModel)comboSelectTeamMember.SelectedItem;
+            selectedTeamMembers.Add(p);
+            availableTeamMembers.Remove(p);
+            WireUpLists();
+        }
+
+        private void btnRemoveSelectedMember_Click(object sender, EventArgs e)
+        {
+            if (listBoxTeamMembers.SelectedItem == null)
+                return;
+
+            PersonModel p = (PersonModel)listBoxTeamMembers.SelectedItem;
+            availableTeamMembers.Add(p);
+            selectedTeamMembers.Remove(p);
+            WireUpLists();
         }
     }
 }
